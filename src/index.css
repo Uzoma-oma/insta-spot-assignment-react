@@ -1,0 +1,840 @@
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  background-color: #fcf5e5;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 0px 80px;
+}
+
+/* Media query */
+@media (min-width: 780px) and (max-width: 1000px) {
+  .container {
+    padding: 0px 50px;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 0 16px;
+  }
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  min-height: 16px;
+}
+
+dialog {
+  border: none !important;
+  padding: 0;
+  background: transparent;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+/**************************************/
+/* Header*/
+/**************************************/
+/* Innocent */
+header {
+  height: 46px;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #ffffffcc;
+  display: flex;
+  justify-content: center;
+}
+
+/**************************************/
+/* Section - hero */
+/**************************************/
+/* WISE */
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 34px 0 20px;
+}
+
+.avatar-container {
+  display: flex;
+  column-gap: 20px;
+}
+
+.newPostBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: 149px;
+  height: 52px;
+  color: #fcf5e5;
+  border: none;
+  border-radius: 8px;
+  background-color: #212121;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.newPostBtn:hover {
+  opacity: 80%;
+}
+
+.newPostBtn span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.avatar__img-container {
+  width: 190px;
+  height: 190px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.truncate {
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+.avatar-text {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  h2 {
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 100%;
+    letter-spacing: 0%;
+    margin-bottom: 10px;
+  }
+  p {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #212121;
+    opacity: 70%;
+    letter-spacing: 0%;
+  }
+}
+
+.edit-profile-btn {
+  text-decoration: none;
+  background-color: transparent;
+  color: #1a1a1a;
+  opacity: 60%;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  padding-top: 12px;
+}
+
+.edit-profile-btn:hover {
+  opacity: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+/* MEDIA QUERIES For HERO SECTION */
+@media screen and (max-width: 780px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .avatar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatar__img-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .avatar-info {
+    gap: 35px;
+  }
+
+  .avatar-text {
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+    p {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #605c5c;
+    }
+  }
+
+  .edit-profile-btn {
+    align-self: center;
+    margin-bottom: 20px;
+  }
+
+  .new-post-btn {
+    margin-top: 15px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .avatar-text {
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.hero-divider {
+  margin: 20px 0;
+  height: 1.5px;
+  background-color: #212121;
+  opacity: 40%;
+  border: none;
+}
+
+
+/**************************************/
+/* Edit Profile Modal Overlay Starts here */
+/**************************************/
+
+/* Hide modal by default */
+
+.ep-overlayHeader {
+  display: flex;
+  margin: auto;
+  background-color: #ffffff;
+  padding-left: 24px;
+  padding-right: 24px;
+  align-items: center;
+  height: 48px;
+  justify-content: space-between;
+}
+
+.ep-overlayBody {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;
+}
+
+.ep-overlayButton {
+  padding-bottom: 24px;
+}
+
+.ep-form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 16px;
+}
+
+.ep-form-group label {
+  font-size: 14px;
+  text-align: left;
+  font-weight: 300;
+  margin-bottom: 8px;
+  line-height: 120%;
+}
+
+.ep-form-group input {
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  border-color: #f0f0f0;
+}
+
+.ep-form-group input:focus,
+.ep-form-group select:focus {
+  outline: none;
+  border-color: #2ec4b6;
+}
+
+.ep-form-group input::placeholder {
+  color: #737373;
+  opacity: 0.7;
+}
+
+#imageInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 12px;
+  padding: 40px;
+  padding-left: 20px;
+  width: 100%;
+  border: 1px dashed #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#imageInput:hover {
+  border-color: #2ec4b6;
+}
+
+/**************************************/
+/* Modal base styles (Edit Profile) */
+/**************************************/
+
+.modal-overlay {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/* Modal box */
+.modal-content {
+  overflow: hidden;
+  background-color: #fef9ef;
+  margin: auto;
+  width: 500px;
+  border-radius: 16px;
+  position: relative;
+
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Close button */
+.close-btn {
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.close-btn:hover {
+  opacity: 80%;
+}
+
+.save-changes-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 52px;
+  color: #fcf5e5;
+  border: none;
+  border-radius: 8px;
+  background-color: #212121;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.save-changes-btn:hover {
+  opacity: 80%;
+}
+
+/* Responsive modal */
+
+@media (max-width: 780px) {
+  /* Modal box */
+  .modal-content {
+    margin: auto;
+    width: 70%;
+    border-radius: 16px;
+  }
+
+  .ep-overlayHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ep-overlayBody {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+  }
+
+  .ep-overlayButton {
+    padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  /* Modal box */
+  .modal-content {
+    margin: auto;
+    width: 90%;
+    border-radius: 16px;
+  }
+
+  .ep-overlayHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .ep-overlayBody {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+  }
+
+  .ep-overlayButton {
+    padding-bottom: 16px;
+  }
+}
+
+/**************************************/
+/* Section - grid */
+/**************************************/
+/*  Osamudiameh  */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6em;
+  margin: 20px 0 40px;
+  user-select: none;
+}
+
+.card-container img {
+  border-radius: 8px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.card-container img:hover,
+.card-container img:focus-visible {
+  transform: scale(1.04);
+  cursor: pointer;
+}
+
+.each-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardImg-div {
+  width: 100%;
+  height: 409px;
+  overflow: hidden;
+}
+.cardImg-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-container .text-icon {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.heart-icon {
+  fill: #212121;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: all 0.2s ease;
+}
+
+.text-icon svg:hover {
+  transform: scale(1.07);
+  opacity: 1;
+}
+
+.heart-icon.liked {
+  fill: red;
+  opacity: 1;
+}
+@media (max-width: 1100px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Image Preview Overlay Styles */
+.modal-inner {
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  padding: 2rem;
+}
+
+.modal-caption {
+  margin-top: 1rem;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.modal-img__container {
+  max-width: 800px;
+  max-height: 600px;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.close-btn__grid {
+  position: absolute;
+  top: 50px;
+  left: 90%;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+/* tawa */
+/* MEDIA QUERIES For GRID SECTION */
+@media (max-width: 1100px) {
+  section.section-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .section-grid .text-icon {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 780px) {
+  section.section-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/**************************************/
+/* New Post Modal by Ola */
+/**************************************/
+
+.overlayHeader {
+  display: flex;
+  margin: auto;
+  background-color: #ffffff;
+  padding-left: 24px;
+  padding-right: 24px;
+  align-items: center;
+  height: 48px;
+  justify-content: space-between;
+}
+
+.overlayBody {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;
+}
+
+.overlayButton {
+  padding-bottom: 24px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  line-height: 120%;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  border-color: #f0f0f0;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2ec4b6;
+}
+
+.form-group input::placeholder {
+  color: #737373;
+  opacity: 0.7;
+}
+
+#imageUpload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 12px;
+  padding: 40px;
+  padding-left: 20px;
+  width: 100%;
+  border: 1px dashed #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+#imageUpload:hover {
+  border-color: #2ec4b6;
+}
+
+/**************************************/
+/* Modal base styles (New Post)  */
+/**************************************/
+
+.newPostModal {
+  display: flex; /* or flex if you're using wrapper inside */
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.newPostModal.hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.newPostModal__wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+/* Modal box */
+.newPostModal-content {
+  overflow: hidden;
+  background-color: #fef9ef;
+  margin: auto;
+  width: 500px;
+  border-radius: 16px;
+  position: relative;
+}
+
+/* Close button */
+.newPostcloseBtn {
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.newPostcloseBtn:hover {
+  opacity: 80%;
+}
+
+.upload-btn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 52px;
+  color: #fcf5e5;
+  border: none;
+  border-radius: 8px;
+  background-color: #212121;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
+
+.upload-btn:hover {
+  opacity: 80%;
+}
+
+/* Responsive modal */
+
+@media (max-width: 780px) {
+  /* Modal box */
+  .newPostModal-content {
+    margin: auto;
+    width: 70%;
+    border-radius: 16px;
+  }
+
+  .overlayHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .overlayBody {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+  }
+
+  .overlayButton {
+    padding-bottom: 16px;
+  }
+}
+
+@media (max-width: 460px) {
+  /* Modal box */
+  .newPostModal-content {
+    margin: auto;
+    width: 90%;
+    border-radius: 16px;
+  }
+
+  .overlayHeader {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .overlayBody {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 16px;
+  }
+
+  .overlayButton {
+    padding-bottom: 16px;
+  }
+}
+
+/**************************************/
+/* Footer */
+/**************************************/
+
+/* oma */
+.site-footer {
+  text-align: center;
+  font-size: 16px;
+  color: #212121b2;
+  padding: 60px 0;
+  font-weight: 400;
+}

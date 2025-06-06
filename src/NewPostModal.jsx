@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import close from "./assets/Icons/Icon_close.svg"
+
 export default function NewPostModal() {
   const modalRef = useRef(null);
   const closeBtnRef = useRef(null);
@@ -101,7 +103,7 @@ export default function NewPostModal() {
               ref={closeBtnRef}
             >
               <span>
-                <img src="../src/assets/Icons/Icon_close.svg" alt="close" />
+                <img src={close} alt="close" />
               </span>
             </button>
           </div>

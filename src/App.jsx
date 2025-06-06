@@ -5,8 +5,10 @@ import EditProfileModal from "./EditProfileModal";
 import ImagePreviewModal from "./ImagePreviewModal";
 import ProfileHeader from "./ProfileHeader";
 
+import logo from "./assets/Logo/Logo.svg";
+import add from "./assets/Icons/Icon_add.svg";
 
-import avatar from "./assets/images/Avatar.png"
+import avatar from "./assets/images/Avatar.png";
 import { initialCards } from "./data";
 
 export default function App() {
@@ -81,7 +83,7 @@ export default function App() {
       <header>
         <nav className="navbar">
           <div className="logo">
-            <img src="../src/assets/Logo/Logo.svg" alt="logo" />
+            <img src={logo} alt="logo" />
           </div>
         </nav>
       </header>
@@ -146,7 +148,7 @@ export default function App() {
             onClick={() => setIsNewPostOpen(true)}
           >
             <span>
-              <img src="../src/assets/Icons/Icon_add.svg" alt="add" />
+              <img src={add} alt="add" />
             </span>
             <span>New Post</span>
           </button>

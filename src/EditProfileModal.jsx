@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
+import close from "./assets/Icons/Icon_close.svg";
+
 export default function EditProfileModal({ profile, onClose, onSave }) {
   const [name, setName] = useState(profile.name || "");
   const [profession, setProfession] = useState(profile.profession || "");
@@ -65,7 +67,7 @@ export default function EditProfileModal({ profile, onClose, onSave }) {
           <h3>Edit Profile</h3>
           <button id="closeModalBtn" className="close-btn" onClick={onClose}>
             <span>
-              <img src="../src/assets/Icons/Icon_close.svg" alt="close" />
+              <img src={close} alt="close" />
             </span>
           </button>
         </div>

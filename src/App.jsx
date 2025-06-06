@@ -5,38 +5,9 @@ import EditProfileModal from "./EditProfileModal";
 import ImagePreviewModal from "./ImagePreviewModal";
 import ProfileHeader from "./ProfileHeader";
 
-const initialCards = [
-  {
-    image: "../src/assets/images/Mask group-5.png",
-    title: "Val Thorens",
-    liked: false,
-  },
-  {
-    image: "../src/assets/images/Mask group-2.png",
-    title: "Restaurant-terrace",
-    liked: false,
-  },
-  {
-    image: "../src/assets/images/Mask group-3.png",
-    title: "An outdoor cafe",
-    liked: false,
-  },
-  {
-    image: "../src/assets/images/Mask group.png",
-    title: "A very long bridge over the forest...",
-    liked: false,
-  },
-  {
-    image: "../src/assets/images/Mask group-1.png",
-    title: "Tunnel with morning light",
-    liked: false,
-  },
-  {
-    image: "../src/assets/images/Mask group-4.png",
-    title: "Mountain house",
-    liked: false,
-  },
-];
+
+import avatar from "./assets/images/Avatar.png"
+import { initialCards } from "./data";
 
 export default function App() {
   const [cards, setCards] = useState(initialCards);
@@ -47,7 +18,7 @@ export default function App() {
   const [profile, setProfile] = useState({
     name: "Bessie Coleman",
     profession: "Civil Aviator",
-    imageSrc: "../src/assets/images/Avatar.png",
+    imageSrc: avatar,
   });
 
   const toggleLike = (index) => {
